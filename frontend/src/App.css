@@ -5,34 +5,32 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 3rem 2.5rem;
-  max-width: 480px;
+.dashboard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 900px;
   width: 100%;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
   animation: fadeInUp 0.6s ease-out;
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
 .badge {
@@ -42,7 +40,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 0.3rem 0.9rem;
+  padding: 0.4rem 1rem;
   border-radius: 999px;
   margin-bottom: 1.2rem;
   text-transform: uppercase;
@@ -50,86 +48,139 @@
 
 h1 {
   color: #ffffff;
-  font-size: 1.75rem;
-  margin: 0 0 0.6rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0 0 0.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.05rem;
   line-height: 1.5;
   margin: 0 0 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ─── Call API Button ─────────────────────────────────────────────────────── */
+/* ─── Button ─────────────────────────────────────────────────────────────── */
 
-.call-btn {
+.btn-primary {
   background: linear-gradient(135deg, #0078d4, #00bcf2);
   color: #fff;
   border: none;
-  padding: 0.85rem 2.2rem;
-  font-size: 1rem;
+  padding: 0.9rem 2.5rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(0, 120, 212, 0.4);
 }
 
-.call-btn:hover:not(:disabled) {
+.btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 120, 212, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 120, 212, 0.5);
 }
 
-.call-btn:active:not(:disabled) {
+.btn-primary:active:not(:disabled) {
   transform: translateY(0);
 }
 
-.call-btn:disabled {
+.btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
-/* ─── Response Box ────────────────────────────────────────────────────────── */
+/* ─── Alerts ─────────────────────────────────────────────────────────────── */
 
-.response {
-  margin-top: 1.8rem;
-  padding: 1rem 1.2rem;
-  border-radius: 12px;
-  text-align: left;
-  animation: fadeInUp 0.35s ease-out;
+.alert {
+  padding: 1.2rem 1.5rem;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  animation: fadeInUp 0.3s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
-.response.success {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.response.error {
-  background: rgba(239, 68, 68, 0.12);
+.alert.error {
+  background: rgba(239, 68, 68, 0.15);
   border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
 }
 
-.response-label {
-  display: block;
-  font-size: 0.75rem;
+/* ─── Weather Data Grid ──────────────────────────────────────────────────── */
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.weather-card h2 {
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.8rem;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.weather-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.temp {
+  color: #fff;
+  font-size: 2.2rem;
   font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.condition {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.3rem;
-  color: rgba(255, 255, 255, 0.7);
 }
 
-.response.success .response-text {
-  color: #34d399;
-}
-
-.response.error .response-text {
-  color: #f87171;
-}
-
-.response-text {
-  font-size: 0.95rem;
-  font-weight: 500;
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 2rem 1.5rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
 }
